@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +11,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CourseFactory extends Factory
 {
+    protected $model = Course::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,7 +21,9 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'category_id' => Category::factory(),
         ];
     }
 }
